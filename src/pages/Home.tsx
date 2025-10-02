@@ -1,18 +1,41 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Palette, Sparkles, Award } from "lucide-react";
-import heroImage from "@/assets/hero-living-room.jpg";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import heroImage1 from "@/assets/hero-living-room.jpg";
+import heroImage2 from "@/assets/hero-living-room-2.jpg";
+import heroImage3 from "@/assets/hero-living-room-3.jpg";
+import heroImage4 from "@/assets/hero-living-room-4.jpg";
+
+const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
+        <Carousel
+          opts={{ loop: true }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+          ]}
+          className="absolute inset-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background"></div>
-        </div>
+          <CarouselContent>
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index}>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${image})` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background"></div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
         
         <div className="relative z-10 container mx-auto px-4 md:px-8 text-center animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground">
