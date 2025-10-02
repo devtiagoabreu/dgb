@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Warm neutral base */
+    --background: 30 20% 98%;
+    --foreground: 25 20% 15%;
+
+    /* Card surfaces with subtle warmth */
+    --card: 30 15% 99%;
+    --card-foreground: 25 20% 15%;
+
+    --popover: 30 15% 99%;
+    --popover-foreground: 25 20% 15%;
+
+    /* Primary: Sophisticated terracotta/burnt sienna */
+    --primary: 15 55% 45%;
+    --primary-foreground: 30 20% 98%;
+
+    /* Secondary: Warm taupe */
+    --secondary: 30 12% 88%;
+    --secondary-foreground: 25 20% 15%;
+
+    /* Muted: Light beige */
+    --muted: 30 15% 92%;
+    --muted-foreground: 25 12% 45%;
+
+    /* Accent: Deep warm brown */
+    --accent: 20 30% 35%;
+    --accent-foreground: 30 20% 98%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 30 20% 98%;
+
+    /* Borders subtle and elegant */
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 15 55% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(30 20% 98%) 0%, hsl(25 15% 95%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(30 15% 99%) 0%, hsl(30 12% 96%) 100%);
+    --shadow-elegant: 0 4px 24px -2px hsl(25 20% 15% / 0.08);
+    --shadow-hover: 0 8px 32px -4px hsl(25 20% 15% / 0.12);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 30 20% 95%;
+
+    --card: 25 22% 12%;
+    --card-foreground: 30 20% 95%;
+
+    --popover: 25 22% 12%;
+    --popover-foreground: 30 20% 95%;
+
+    --primary: 15 65% 55%;
+    --primary-foreground: 25 25% 10%;
+
+    --secondary: 25 15% 20%;
+    --secondary-foreground: 30 20% 95%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 30 12% 60%;
+
+    --accent: 20 40% 45%;
+    --accent-foreground: 30 20% 95%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 30 20% 95%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 15 65% 55%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(25 25% 10%) 0%, hsl(25 22% 14%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(25 22% 12%) 0%, hsl(25 18% 15%) 100%);
+    --shadow-elegant: 0 4px 24px -2px hsl(0 0% 0% / 0.3);
+    --shadow-hover: 0 8px 32px -4px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .fabric-card {
+    @apply rounded-lg bg-card shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)];
+    @apply hover:shadow-[var(--shadow-hover)] hover:scale-[1.02];
+  }
+
+  .fabric-button-primary {
+    @apply bg-primary text-primary-foreground rounded-lg px-6 py-3 font-medium;
+    @apply transition-[var(--transition-smooth)] hover:brightness-110 hover:shadow-lg;
+  }
+
+  .fabric-button-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-lg px-6 py-3 font-medium;
+    @apply transition-[var(--transition-smooth)] hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .fabric-section {
+    @apply py-20 px-4 md:px-8;
+  }
+}
