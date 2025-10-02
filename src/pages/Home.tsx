@@ -21,13 +21,13 @@ const Home = () => {
               delay: 5000,
             }),
           ]}
-          className="absolute inset-0"
+          className="absolute inset-0 w-full h-full"
         >
-          <CarouselContent>
+          <CarouselContent className="h-screen">
             {heroImages.map((image, index) => (
-              <CarouselItem key={index}>
+              <CarouselItem key={index} className="h-screen">
                 <div 
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="w-full h-full bg-cover bg-center"
                   style={{ backgroundImage: `url(${image})` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background"></div>
